@@ -1,6 +1,9 @@
 /*************************
 // GET PRODUCT CATEGORIES
 *************************/
+
+// TODO: Add closure - add scope and packages. Divide files into mininful sections. Add JSDOC comments. Be consistent
+
 var Category = Backbone.Model.extend({
 	defaults: {
 		categories: ['one' , 'two', 'three']
@@ -21,6 +24,7 @@ var CategoriesView = Backbone.View.extend({
 		var self = this;
 		this.list = new CategoryCollection();
 		this.list.on('reset', this.render, this);
+		// This is correct
 		this.list.fetch().done(function(result) {
 			console.log(result);
 			self.render();
@@ -104,12 +108,15 @@ var ProductCollectionView = Backbone.View.extend({
 
 	render: function() {
 		var self = this;
+		// TODO: look at promisses 
 		this.collection.fetch({
 			success: function(result) {
-				self.$el.html(''); //clear our products div before adding new category items
-				_.each(self.collection.models, function (item) {
-					self.renderProduct(item);
-				}, this);
+				setTimeout(function () {
+					self.$el.html(''); //clear our products div before adding new category items
+					_.each(self.collection.models, function (item) {
+						self.renderProduct(item);
+					}, this);
+				}, 4000);
 			}
 		});
 		
@@ -130,7 +137,7 @@ var User = Backbone.Model.extend({
 		name: 'Name',
 		email: 'email@mail.com',
 		password: 'pass',
-		type: 'regular'
+		type: 'regular' 
 	},
 	urlRoot : 'http://bterra.net/api/users'
 });
@@ -180,9 +187,10 @@ var Router = Backbone.Router.extend({
 
 	account: function() {
 		console.log('account view');
-		var user = new User({id: 2});
-		user.fetch();
-		user.destroy();
+		var user = new User({name: 'Liza'});
+		user.save();
+		// user.fetch();
+		// user.destroy();
 		var userView = new UserView({model: user});
 	},
 
@@ -192,5 +200,5 @@ var Router = Backbone.Router.extend({
 	}
 
 });
-var router = new Router;
+var router = new Router();
 Backbone.history.start();
