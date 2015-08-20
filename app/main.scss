@@ -1,0 +1,9 @@
+@import "css/foundation"; 
+@import "css/normalize"; 
+// @import "global";
+
+//CSS for shared components
+@import "js/modules/account/account";
+@import "js/modules/cart/cart";
+@import "js/modules/home/home";
+@import "js/modules/products/products";

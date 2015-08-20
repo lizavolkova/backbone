@@ -1,0 +1,113 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <style>
+
+        #main {
+            width: 960px;
+            background: #FFF;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .product {
+            border: 1px solid red;
+            margin: 10px;
+        }
+
+        .panel {
+            min-height: 200px;
+        }
+
+        #product, .loading {
+            min-height: 500px;
+            background-color: red;
+        }
+    </style>
+  </head>
+  <body>
+    
+
+    <!-- navigation -->
+    <nav class="top-bar" data-topbar role="navigation">
+        <ul class="title-area">
+            <li class="name">
+                <h1>
+                    <a href="">Liza's App</a>
+                </h1>
+            </li>
+        </ul>
+        
+        <section class="top-bar-section">
+            <ul class="left">
+                <li class="has-dropdown">
+                    <a href="#">Categories</a>
+                    <ul class="dropdown" id="category-list">
+                      
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="right">
+                <li>
+                    <a href="#account">Account</a>
+                </li>
+            </ul>
+        </section>
+
+    </nav>
+    <!-- end navigation -->
+
+    <div id="main">
+        <div class="row" id="products"></div>
+    </div>
+    
+
+    <!-- product list -->
+    <script id="productTemplate" type="text/template">
+        <img src="<%= img %>" alt="<%= name %>"/>
+        <div class="panel">
+            <h5><%= name %></h5>
+            <h6><%= price %></h6>
+            <p><%= category %></p>
+        </div>
+    </script>
+    <!-- end product list -->
+
+    <!-- user account -->
+    <script id="accountTemplate" type="text/template">
+    <form id="accountForm">
+        <label for="name">Name:</label> 
+        <input type="text" class="" placeholder="name" name="name" id="account-name" value="<%= name %>">
+        <label for="email">E-mail:</label> 
+        <input type="text" class="" placeholder="email" name="email" id="account-email" value="<%= email %>">
+        <label for="pasword">Password:</label> 
+        <input type="text" class="" placeholder="password" name="password" id="account-password" value="<%= password %>">
+        <button type="submit">save</button>
+    </form>
+    </script>
+
+    <!-- end user account 
+<label for="type">Type:</label> 
+        <select name="type" id="">
+            <option value="regular">regular</option>
+            <option value="skin">skincare</option>
+            <option value="makeup">makeup</option>
+        </select>
+    
+    
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/underscore-min.js"></script>
+    <script src="js/vendor/backbone-min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/app.js"></script>-->
+
+    <script src="all.min.js"></script>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
