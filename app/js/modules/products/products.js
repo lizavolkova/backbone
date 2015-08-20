@@ -115,7 +115,14 @@ var ProductCollectionView = Backbone.View.extend({
 //MODAL
 ***************************************************/
 var Modal = Backbone.View.extend({
+	template: _.template("<div class='modal'>Hello <%= who %></div>"),
+
 	initialize: function() {
-		console.log('modal called!');
+		this.render();
+	},
+
+	render: function() {
+		console.log('rendering modal');
+		this.$el.html(this.template({who: 'world!'}));
 	}
 });
