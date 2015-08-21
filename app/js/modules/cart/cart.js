@@ -28,7 +28,7 @@
 		initialize: function(options) {
 
 			// this.collection = new app.collections.ProductCollection(options);
-			this.collection = options.collection;
+			// this.collection = options.collection;
 			console.log(this.collection);
 		},
 

@@ -3,6 +3,11 @@
  * @version 1.0
  */
 
+
+//table of products
+//a table that affects the prices (coupon code in the cart)
+//can still edit quantity of product
+
 /**
  * @class 
  */
