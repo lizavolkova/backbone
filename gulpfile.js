@@ -8,6 +8,7 @@ var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
+var jsdoc = require("gulp-jsdoc");
 
 // Lint Task
 gulp.task('lint', function() {
@@ -60,6 +61,12 @@ gulp.task('browser-sync', function() {
             baseDir: "dist"
         }
     });
+});
+
+//generate JSDoc
+gulp.task('jsdoc', function() {
+    return gulp.src('app/js/modules/**/*.js')
+        .pipe(jsdoc('./documentation-output'));
 });
 
 // Watch Files For Changes

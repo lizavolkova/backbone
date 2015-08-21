@@ -4,9 +4,57 @@
 	app.views = app.views || {};
 
 	// TODO: Add closure - add scope and packages. Divide files into mininful sections. Add JSDOC comments. Be consistent
+	var user = new app.models.User({id: '43'});
+	//user.save();
+	user.fetch();
+	
+	var eventAgg = _.extend({}, Backbone.Events);
+	
+
+
+	var RenderHTML = Backbone.View.extend({
+		el: '#main',
+
+		initialize: function() {
+			console.log('save html initialized');
+			this.collection = new app.collections.CartCollection(options);
+			this.userView = new app.views.UserView({model: user});
+			this.miniCart = new app.views.MiniCartView({
+				collection: this.collection,
+				eventAgg: eventAgg
+			});
+		},
+
+		getIndex: function() {
+			var html = '<strong>This is the html for index route</html>';
+			this.$el.html(html);
+		},
+
+		getAccount: function() {
+			this.$el.html(this.userView.render().el);
+		},
+
+		getCategory: function(cat) {
+			this.products = new app.views.ProductCollectionView({category: cat, eventAgg: eventAgg});
+			this.$el.html(this.products.render().el);
+		},
+
+		getCart: function() {
+			// var cartProducts = this.miniCart.getCollection();
+			this.cartView = new app.views.CartCollectionView({
+				collection: this.collection, //cartProducts, 
+				eventAgg: eventAgg
+			});
+			this.$el.html(this.cartView.render().el);
+		}
+
+	});
+	var renderHTML = new RenderHTML();
+
+
+	
 
 	/*************************
-
 	// CREATE ROUTES
 	*************************/				
 	//View dispatcher; will also control animations
@@ -27,37 +75,30 @@
 			
 		},
 
-		index: function(){
-			console.log('I am on index route!');
+		execute: function(callback, args, name) {
+			if (callback) callback.apply(this, args);
+		},
 
+		index: function(){
+			renderHTML.getIndex();
 		},
 
 		category: function(cat) {
-			this.products = new app.views.ProductCollectionView({category: cat, eventAgg: eventAgg});
+			renderHTML.getCategory(cat);		
 		},
 
 		account: function() {
-			console.log('account view');
-			var user = new app.models.User({id: '44'});
-			//user.save();
-			user.fetch();
-			var userView = new app.views.UserView({model: user});
-			// user.destroy();
+			renderHTML.getAccount();
 		},
 
-		// destroy: function() {
-		// 	this.remove();
-		// 	this.unbind();
-		// }
-
 		cart: function() {
-			// var cartView = new app.views.CartCollectionView()
+			renderHTML.getCart();
 		}
 
 
 	});
 	
-	var eventAgg = _.extend({}, Backbone.Events);
+	
 
 	// app.views.AddToBagEvent = Backbone.View.extend({
 	// 	initialize: function(options) {
@@ -66,9 +107,13 @@
 
 		
 	// });
-	var addToBagEvent = new app.views.CartCollectionView({eventAgg: eventAgg});
+	
 
 	app.router = new app.Router();
 	Backbone.history.start();
+
+	
+
+	
 
 }(window.app = window.app || {}));
