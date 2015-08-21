@@ -31,8 +31,13 @@ gulp.task('scripts', function() {
     		'app/js/vendor/underscore-min.js', 
     		'app/js/vendor/backbone-min.js', 
     		'app/js/vendor/foundation.min.js', 
-    		'app/js/vendor/modernizr.js', 
-    		'app/js/modules/**/*.js', 
+            'app/js/vendor/modernizr.js', 
+    		'app/js/vendor/foundation/*.js', 
+            'app/js/modules/products/*.js', 
+            'app/js/modules/account/*.js', 
+            'app/js/modules/cart/*.js', 
+            'app/js/modules/home/*.js', 
+    		'app/js/modules/global/*.js', 
     		'app/js/*.js'
     	])
         .pipe(concat('all.js'))
