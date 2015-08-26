@@ -109,8 +109,11 @@
 		},
 
 		updateQty: function(e) {
-			var val = $(e.currentTarget).val();
+			var val = Number($(e.currentTarget).val());
+			var price = Number(this.model.get('price'));
+			var total = val*price;
 			this.model.set({qty: val});
+			this.model.set({total: total});
 		}
 	});
 
