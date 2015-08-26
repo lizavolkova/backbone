@@ -33,6 +33,7 @@ gulp.task('scripts', function() {
     		'app/js/vendor/backbone-min.js', 
     		'app/js/vendor/foundation.min.js', 
             'app/js/vendor/modernizr.js', 
+            'app/js/vendor/data-tables.js', 
     		'app/js/vendor/foundation/*.js', 
             'app/js/modules/products/*.js', 
             'app/js/modules/account/*.js', 

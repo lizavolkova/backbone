@@ -39,7 +39,8 @@ function ClassName () {
 			price: '0.00',
 			description: 'Description',
 			category: 'Category',
-			promotion: 'Promotion'
+			promotion: 'Promotion',
+			qty: ''
 		}
 	});
 
@@ -195,15 +196,20 @@ function ClassName () {
 		addToBag: function(e) {
 			e.preventDefault();
 			var id 		= $(e.currentTarget).data("id");
-			var product = new app.model.Product({
-				img: 'https://placehold.it/100x100',
-				name: 'New Name',
-				price: '15.00',
-				description: 'Description',
-				category: 'Category',
-				promotion: 'Promotion'
+			currentProduct = this.collection.get(id);
+			// console.log(currentProduct);
+			// var product = new.app.models.Product({model:    });
+			var product = new app.models.Product({
+				id: currentProduct.attributes.id,
+				img: currentProduct.attributes.img,
+				name: currentProduct.attributes.name,
+				price: currentProduct.attributes.price,
+				description: currentProduct.attributes.description,
+				category: currentProduct.attributes.category,
+				promotion: currentProduct.attributes.promotion,
+				qty: '1'
 			});
-			// currentProduct = this.collection.get(id);
+			product.cid = currentProduct.cid;
 			this.eventAgg.trigger('addToBag', product);//currentProduct);
 			//take current model, and send it over to cart view collection for storage
 		}

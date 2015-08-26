@@ -34,7 +34,6 @@
 	 	 */
 		initialize: function() {
 			this.categories = new app.models.Category();
-			console.log(this.categories);
 			// this.model.on('reset', this.render, this);
 			// this.model.on('change', this.render, this);
 			var self = this;

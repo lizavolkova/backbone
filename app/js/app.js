@@ -17,7 +17,27 @@
 
 		initialize: function() {
 			console.log('save html initialized');
-			this.collection = new app.collections.CartCollection(options);
+			this.collection = new app.collections.CartCollection();
+			this.collection.add({
+				id: '123',
+				img: 'https://placehold.it/100x100',
+				name: 'Test Product Name',
+				price: '15.00',
+				description: 'Test pruduct description',
+				category: 'Fragrance',
+				promotion: '',
+				qty: '1'
+			});
+			this.collection.add({
+				id: '456',
+				img: 'https://placehold.it/100x100',
+				name: 'Test Product Name',
+				price: '20.00',
+				description: 'Test pruduct description',
+				category: 'Fragrance',
+				promotion: '',
+				qty: '1'
+			});
 			this.userView = new app.views.UserView({model: user});
 			this.miniCart = new app.views.MiniCartView({
 				collection: this.collection,
